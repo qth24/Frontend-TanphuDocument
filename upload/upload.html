@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TanphuDocument</title>
+    <link rel="stylesheet" href="../css/head_nav_style.css">
+    <link rel="stylesheet" href="../css/main_style.css">
+    <link rel="stylesheet" href="../css/footer_style.css">
+    <link rel="stylesheet" href="../css/upload/upload.css">
+    <link rel="stylesheet" href="../css/transition.css">
+
+    <!-- Optional: Add Font Awesome for icons like the home icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<!-- nav (thay đổi sau) -->
+<nav class="navbar">
+    <ul class="nav-list">
+        <li class="nav-item">
+            <a href="../index.html"><i class="fa-solid fa-house"></i> Trang chủ</a>
+        </li>
+        <li class="nav-item has-dropdown">
+            <a href="#">Tin tức <span class="arrow-down">▾</span></a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-item"><a href="#">Tin nổi bật</a></li>
+                <li class="dropdown-item"><a href="#">Thông báo</a></li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a href="#">Đóng góp tài liệu </a>
+        </li>
+        <li class="nav-item has-dropdown">
+            <a href="#">Khoa học tự nhiên <span class="arrow-down">▾</span></a>
+             <ul class="dropdown-menu">
+                <li class="dropdown-item"><a href="#">Toán học</a></li>
+                <li class="dropdown-item"><a href="#">Vật lý</a></li>
+                <li class="dropdown-item"><a href="#">Hoá học</a></li>
+                 <li class="dropdown-item"><a href="#">Sinh học</a></li>
+            </ul>
+        </li>
+        <li class="nav-item has-dropdown">
+            <a href="#">Khoa học xã hội <span class="arrow-down">▾</span></a>
+             <ul class="dropdown-menu">
+                <li class="dropdown-item"><a href="#">Ngữ văn</a></li>
+                <li class="dropdown-item"><a href="#">Lịch sử</a></li>
+                <li class="dropdown-item"><a href="#">Địa lý</a></li>
+                <li class="dropdown-item"><a href="#">Giáo dục kinh tế và pháp luật</a></li>
+            </ul>
+        </li>
+        <li class="nav-item has-dropdown">
+            <a href="#">Các môn khác <span class="arrow-down">▾</span></a>
+             <ul class="dropdown-menu">
+                <li class="dropdown-item"><a href="#">Công nghệ</a></li>
+                <li class="dropdown-item"><a href="#">Tin học</a></li>
+                <li class="dropdown-item"><a href="#">Giáo dục quốc phòng và an ninh</a></li>
+            </ul>
+        </li>
+        <li class="nav-item has-dropdown">
+            <a href="#">Ngoại ngữ <span class="arrow-down">▾</span></a>
+             <ul class="dropdown-menu">
+                <li class="dropdown-item"><a href="#">Anh Văn</a></li>
+                <li class="dropdown-item"><a href="#">Tiếng Trung</a></li>
+            </ul>
+        </li>
+        <li class="nav-item has-dropdown">
+            <a href="#">Kỳ thi đặc biệt <span class="arrow-down">▾</span></a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-item"><a href="#">THPTQG</a></li>
+                <li class="dropdown-item"><a href="#">ĐGNL</a></li>
+                <li class="dropdown-item"><a href="#">HSG cấp tỉnh</a></li>
+            </ul>
+        </li>
+        <li class="nav-item has-dropdown">
+            <a href="#">Câu lạc bộ <span class="arrow-down">▾</span></a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-item"><a href="#">Truyền thông</a></li>
+                <li class="dropdown-item"><a href="#">Văn học - Nghệ thuật</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+<body>
+    <!-- ... (Header, Nav, Marquee, Banner của bạn) ... -->
+
+    <main class="container">
+        <h1>Đóng góp tài liệu</h1>
+
+        <div class="upload-form-container">
+            <!-- === Bỏ action và method khỏi thẻ form nếu dùng fetch hoàn toàn === -->
+            <form id="uploadForm" enctype="multipart/form-data">
+                <!-- enctype vẫn cần thiết cho FormData -->
+
+                <div class="form-group">
+                    <label for="author">Tác giả:</label> <!-- Không có * đỏ -->
+                    <input type="text" id="author" name="author" class="form-control">
+                    <!-- Bỏ 'required' nếu kiểm tra bằng JS -->
+                </div>
+
+                <div class="form-group">
+                    <label for="docName">Tên tài liệu: <span style="color: red">*</span></label>
+                    <input type="text" id="docName" name="name" class="form-control">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group half-width">
+                        <label for="subject">Môn học: <span style="color: red">*</span></label>
+                        <select id="subject" name="subject" class="form-control">
+                            <option value="" disabled selected>-- Chọn môn học --</option>
+                            <option value="Math">Toán học</option>
+                            <option value="Physics">Vật lý</option>
+                            <option value="Chemistry">Hóa học</option>
+                            <option value="Biology">Sinh học</option>
+                            <option value="Literature">Ngữ văn</option>
+                            <option value="English">Tiếng Anh</option>
+                            <option value="History">Lịch sử</option>
+                            <option value="Geography">Địa lý</option>
+                            <option value="It">Tin học</option>
+                            <option value="Civic_education">Giáo dục kinh tế và pháp luật</option>
+                            <option value="Tech">Công nghệ</option>
+                        </select>
+                    </div>
+                    <div class="form-group half-width">
+                        <label for="grade">Khối lớp: <span style="color: red">*</span></label>
+                        <select id="grade" name="grade" class="form-control">
+                            <option value="" disabled selected>-- Chọn khối lớp --</option>
+                            <option value="10">Lớp 10</option>
+                            <option value="11">Lớp 11</option>
+                            <option value="12">Lớp 12</option>
+                        </select>
+                    </div>
+                </div>
+
+                 <div class="form-row">
+                     <div class="form-group half-width">
+                        <label for="year">Năm học: <span style="color: red">*</span></label>
+                        <select id="year" name="year" class="form-control">
+                            <option value="" disabled selected>-- Chọn năm học --</option>
+                            <option value="2025">2024-2025</option>
+                            <option value="2024">2023-2024</option>
+                            <option value="2023">2022-2023</option>
+                            <option value="2022">2021-2022</option>
+                            <option value="2021">2020-2021</option>
+                            <option value="2020">2019-2020</option>
+                            <option value="2019">2018-2019</option>
+                        </select>
+                    </div>
+                    <div class="form-group half-width">
+                        <label for="semester">Học kỳ:</label> <!-- Không có * đỏ -->
+                        <select id="semester" name="semester" class="form-control">
+                            <option value="" disabled selected>-- Chọn học kỳ --</option>
+                            <option value="1">Giữa kỳ 1</option>
+                            <option value="2">Cuối kỳ 1</option>
+                            <option value="3">Giữa kỳ 2</option>
+                            <option value="4">Cuối kỳ 2</option>
+                        </select>
+                    </div>
+                     <div class="form-group half-width">
+                        <label for="competition">Kỳ thi:</label> <!-- Không có * đỏ -->
+                        <select id="competition" name="competition" class="form-control">
+                             <option value="" disabled selected>-- Chọn kỳ thi --</option>
+                             <option value="1">Trung học phổ thông quốc gia</option>
+                             <option value="2">Đánh giá năng lực</option>
+                             <option value="3">Học sinh giỏi cấp tỉnh</option>
+                        </select>
+                    </div>
+                 </div>
+
+                <div class="form-group">
+                    <label for="teacher">Giáo viên (Nếu có):</label> <!-- Không có * đỏ -->
+                    <input type="text" id="teacher" name="teacher" class="form-control">
+                </div>
+
+                <!-- === File Input Section === -->
+                <div class="form-group">
+                    <!-- Label chính mô tả, thêm for để liên kết rõ ràng hơn (dù không bắt buộc khi label kia đã có for) -->
+                    <label for="file">Chọn tệp tài liệu: <span style="color: red">*</span></label>
+                
+                    <!-- Input ẩn để xử lý file, id phải khớp với for của label bấm được -->
+                    <input type="file" id="file" name="file" accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.txt,.zip,.rar,.jpg,.png,.jpeg" style="display: none;">
+                
+                    <!-- Label hiển thị dạng nút, CÓ 'for' trỏ đến id của input -->
+                    <label for="file" class="btn btn-outline-primary file-upload-label">
+                        <i class="fas fa-upload"></i> Chọn tệp...
+                    </label>
+                
+                    <!-- Khu vực xem trước file -->
+                    <div id="file-preview-container" class="file-preview">
+                        <span id="file-preview-placeholder">Chưa có tệp nào được chọn</span>
+                        <div id="file-preview-details" style="display: none;">
+                            <p><strong>Tên tệp:</strong> <span id="file-name"></span></p>
+                            <p><strong>Kích thước:</strong> <span id="file-size"></span></p>
+                            <p><strong>Loại:</strong> <span id="file-type"></span></p>
+                        </div>
+                    </div>
+                    <small class="form-text text-muted">Loại tệp được chấp nhận: PDF, DOC(X), PPT(X), XLS(X), TXT, ZIP, RAR, JPG, PNG, JPEG.</small>
+                </div>
+                <!-- === End File Input Section === -->
+
+                <!-- === VÙNG HIỂN THỊ THÔNG BÁO === -->
+                <div id="form-message" style="margin-top: 15px; margin-bottom: 15px; font-weight: bold;" aria-live="polite"></div>
+
+                <div class="form-group submit-group">
+                     <!-- === THÊM ID VÀO NÚT SUBMIT === -->
+                     <button type="submit" id="submitBtn" class="btn btn-primary">Gửi tài liệu</button>
+                </div>
+
+            </form>
+        </div> <!-- End .upload-form-container -->
+    </main>
+
+    <!-- (Footer của bạn) -->
+
+
+    <!-- Link tới file JavaScript -->
+    <script src="../js/upload/upload.js" defer></script>
+    <!-- Giữ lại transition.js nếu bạn cần nó cho việc khác -->
+    <script src="../js/transition.js"></script>
+
+</body>

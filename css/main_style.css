@@ -1,0 +1,218 @@
+/* ----- Marquee Styling ----- */
+.marquee-container {
+    background-color: #f8f8f8; /* Màu nền xám nhạt */
+    padding: 8px 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    overflow: hidden; /* Đảm bảo marquee không tràn ra ngoài */
+    margin-top: 15px; /* Khoảng cách với navbar */
+}
+
+.marquee-container marquee {
+    font-weight: bold;
+    color: #CC0000; /* Màu đỏ cho chữ */
+    font-size: 1.1em;
+}
+
+.marquee-container span {
+    margin-right: 50px; /* Khoảng cách giữa các thông báo nếu có nhiều */
+}
+
+
+/* ----- Main Content Area ----- */
+.container {
+    max-width: 1200px; /* Giới hạn chiều rộng tối đa */
+    margin: 20px auto; /* Căn giữa và tạo khoảng cách trên dưới */
+    padding: 0 15px; /* Khoảng cách lề trái phải */
+}
+
+/* ----- Grid Layout for Main Content ----- */
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Tạo 3 cột bằng nhau */
+    gap: 30px; /* Khoảng cách giữa các cột */
+    margin-bottom: 40px; /* Khoảng cách với phần dưới */
+}
+
+/* ----- News Column Styling ----- */
+.news-column {
+    background-color: #fff;
+    border: 1px solid #e0e0e0; /* Viền xám nhạt */
+    padding: 20px;
+    border-radius: 5px; /* Bo góc nhẹ */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Đổ bóng nhẹ */
+}
+
+.column-title {
+    font-size: 1.4em;
+    color: #005A8C; /* Màu xanh đậm */
+    margin-top: 0;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #007AB5; /* Đường kẻ xanh dưới tiêu đề */
+    text-transform: uppercase; /* Viết hoa */
+    font-weight: bold;
+}
+
+/* ----- Thumbnail Styling ----- */
+.thumbnail-container {
+    position: relative; /* Để chứa overlay */
+    margin-bottom: 15px;
+}
+
+.thumbnail-container img {
+    display: block;
+    width: 100%;
+    height: auto; /* Giữ tỷ lệ ảnh */
+    border-radius: 4px; /* Bo góc ảnh */
+}
+
+
+/* ----- News List Styling ----- */
+.news-list {
+    padding-left: 0; /* Bỏ padding mặc định của ul */
+    margin-bottom: 15px; /* Khoảng cách với phần tử bên dưới (nếu có) */
+}
+
+.news-list li {
+    margin-bottom: 10px; /* Khoảng cách giữa các mục tin */
+    padding-bottom: 10px; /* Khoảng cách với đường kẻ */
+    border-bottom: 1px dotted #ccc; /* Đường kẻ chấm */
+    line-height: 1.5; /* Giãn dòng */
+}
+
+.news-list li:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none; /* Bỏ đường kẻ ở mục cuối */
+}
+
+.news-list a {
+    color: #333; /* Màu chữ chính */
+    transition: color 0.3s ease;
+    display: block; /* Cho phép click cả dòng */
+}
+
+.news-list a:hover {
+    color: #007AB5; /* Màu xanh khi hover */
+}
+
+.icon-bullet {
+    font-size: 0.7em; /* Kích thước icon nhỏ */
+    color: #007AB5; /* Màu xanh cho icon */
+    margin-right: 8px; /* Khoảng cách với text */
+    vertical-align: middle; /* Căn giữa icon với text */
+}
+
+.news-date {
+    font-size: 0.9em;
+    color: #888; /* Màu xám cho ngày tháng */
+    margin-left: 5px;
+}
+
+/* ----- New Badge Styling ----- */
+.new-badge {
+    background-color: #ff4d4d; /* Màu đỏ */
+    color: white;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-left: 5px;
+    text-transform: uppercase;
+    vertical-align: middle; /* Căn giữa với text */
+}
+
+/* ----- Headline and Excerpt (For Tin UIT & Tuyển sinh) ----- */
+.news-headline {
+    font-size: 1.1em;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.news-headline a {
+    color: #005A8C;
+    font-weight: bold;
+}
+.news-headline a:hover {
+    color: #007AB5;
+}
+
+.news-excerpt {
+    color: #555;
+    font-size: 0.95em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Style cho danh sách tin ngắn hơn ở cột 2, 3 */
+.compact-list li {
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+}
+
+/* ----- Responsive (Simple Example) ----- */
+@media (max-width: 992px) {
+    .content-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 cột trên tablet */
+    }
+     .sub-content-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 cột trên tablet */
+    }
+    /* Cột thứ 3 của content-grid và sub-content-grid sẽ xuống hàng */
+    .news-column:last-child, .sub-column:last-child {
+         grid-column: 1 / -1; /* Chiếm toàn bộ chiều rộng ở hàng mới */
+         margin-top: 30px; /* Thêm khoảng cách trên */
+    }
+     /* Hoặc bạn có thể chỉ cho content-grid thành 2 cột và sub-content-grid giữ 3 cột nếu muốn */
+}
+
+@media (max-width: 768px) {
+    .content-grid {
+        grid-template-columns: 1fr; /* 1 cột trên mobile */
+        gap: 20px;
+    }
+     .sub-content-grid {
+        grid-template-columns: 1fr; /* 1 cột trên mobile */
+        gap: 20px;
+    }
+     .news-column:last-child, .sub-column:last-child {
+         margin-top: 0; /* Reset margin khi tất cả thành 1 cột */
+    }
+    .navbar {
+        justify-content: flex-start; /* Căn trái nav trên mobile */
+        overflow-x: auto; /* Cho phép cuộn ngang nếu nav quá dài */
+    }
+    .nav-list {
+        flex-wrap: nowrap; /* Ngăn nav xuống dòng */
+    }
+}
+
+/* ----- Banner Image Styling ----- */
+.banner-container {
+    /* width: 100%; */ /* Có thể bỏ đi vì đã nằm trong .container */
+    margin-top: 15px; /* Khoảng cách với marquee phía trên */
+    margin-bottom: 20px; /* Khoảng cách với nội dung chính bên dưới */
+    line-height: 0; /* Loại bỏ khoảng trắng thừa dưới ảnh nếu có */
+    border-radius: 5px; /* Optional: Bo góc cho container nếu muốn */
+    overflow: hidden; /* Optional: Đảm bảo ảnh bo góc theo container */
+}
+
+.banner-image {
+    display: block;
+    width: 100%; /* Chiếm 100% chiều rộng của .banner-container */
+    height: auto;
+    /* max-height: 400px; */ /* Có thể giữ lại hoặc bỏ đi tùy ý */
+    /* object-fit: cover; */ /* Có thể giữ lại hoặc bỏ đi tùy ý */
+    border-radius: 5px; /* Optional: Bo góc cho chính tấm ảnh */
+}
+
+/* CSS cho .container đã có từ trước, đảm bảo nó được giữ nguyên */
+.container {
+    max-width: 1200px; /* Chiều rộng tối đa */
+    margin-left: auto; /* Tự động căn lề trái */
+    margin-right: auto; /* Tự động căn lề phải => Căn giữa */
+    padding-left: 15px; /* Khoảng đệm trái */
+    padding-right: 15px; /* Khoảng đệm phải */
+}
+

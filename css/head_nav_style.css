@@ -1,0 +1,363 @@
+/* ----- Basic Reset & Body Styling ----- */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif; /* Hoặc font bạn muốn */
+  font-size: 14px;
+}
+
+ul {
+  list-style: none; /* Bỏ dấu chấm đầu dòng của list */
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none; /* Bỏ gạch chân link */
+  color: inherit; /* Link kế thừa màu từ thẻ cha */
+}
+
+/* ----- Navbar Styling ----- */
+.navbar {
+  background-color: #0096D6; /* Màu xanh dương giống ảnh */
+  color: white;
+  display: flex; /* Sử dụng flexbox để căn giữa dễ dàng (tùy chọn) */
+  justify-content: center; /* Căn giữa các mục nav */
+}
+
+.nav-list {
+  display: flex; /* Các mục nav nằm ngang */
+}
+
+/* ----- Nav Item Styling ----- */
+.nav-item {
+  position: relative; /* Quan trọng để định vị dropdown menu */
+}
+
+.nav-item > a { /* Chỉ áp dụng cho link cấp 1 */
+  display: block; /* Link chiếm toàn bộ không gian li */
+  /* Giữ lại các giá trị padding/font-size bạn đã chỉnh (nếu có) */
+  padding: 20px 25px; /* Ví dụ: Giữ lại giá trị đã tăng ở bước trước */
+  font-size: 16px;  /* Ví dụ: Giữ lại giá trị đã tăng ở bước trước */
+  color: white;
+  transition: background-color 0.3s ease; /* Hiệu ứng chuyển màu nền mượt */
+
+  /* === THÊM DÒNG NÀY ĐỂ IN ĐẬM === */
+  font-weight: bold;
+  /* =============================== */
+
+  /* Cân nhắc thêm nếu cần căn giữa icon và text khi chiều cao tăng nhiều */
+  /* display: flex; */
+  /* align-items: center; */
+}
+
+/* Các quy tắc khác giữ nguyên */
+.nav-item > a .fa-house { /* Icon nhà */
+  margin-right: 8px; /* Giữ lại giá trị đã chỉnh */
+}
+
+.nav-item > a .arrow-down { /* Mũi tên xuống */
+  font-size: 0.8em; /* Giữ lại giá trị đã chỉnh */
+  margin-left: 8px; /* Giữ lại giá trị đã chỉnh */
+  display: inline-block; /* Để không bị xuống dòng */
+  /* Cân nhắc tăng nhẹ font-weight nếu muốn mũi tên đậm hơn một chút */
+  /* font-weight: 600; */
+}
+
+/* ----- Hover Effect for Nav Items ----- */
+.nav-item:hover > a { /* Khi di chuột qua li cấp 1 */
+  background-color: #007AB5; /* Đổi màu nền đậm hơn */
+}
+
+/* ----- Dropdown Menu Styling (Hidden by default) ----- */
+.dropdown-menu {
+  display: none; /* Ẩn menu con ban đầu */
+  position: absolute; /* Định vị tuyệt đối so với .nav-item */
+  top: 100%; /* Nằm ngay dưới mục cha */
+  left: 0; /* Căn lề trái với mục cha */
+  background-color: white; /* Nền trắng */
+  min-width: 200px; /* Độ rộng tối thiểu */
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Đổ bóng */
+  z-index: 1; /* Đảm bảo nằm trên các phần tử khác */
+  border-top: 3px solid #007AB5; /* Thêm đường viền xanh phía trên */
+}
+
+/* ----- Dropdown Item Styling ----- */
+.dropdown-item a {
+  display: block;
+  padding: 12px 16px;
+  color: #333; /* Màu chữ đen */
+  white-space: nowrap; /* Ngăn text xuống dòng */
+  transition: background-color 0.3s ease; /* Hiệu ứng chuyển màu nền */
+  border-bottom: 1px solid #f0f0f0; /* Đường kẻ ngăn cách */
+}
+
+.dropdown-item:last-child a {
+  border-bottom: none; /* Bỏ đường kẻ ở mục cuối */
+}
+
+/* ----- Hover Effect for Dropdown Items ----- */
+.dropdown-item a:hover {
+  background-color: #f1f1f1; /* Màu nền xám nhạt khi hover */
+  color: #007AB5; /* Đổi màu chữ thành xanh */
+}
+
+/* ----- Show Dropdown on Hover ----- */
+.nav-item.has-dropdown:hover > .dropdown-menu {
+  display: block; /* Hiển thị menu con khi di chuột qua .nav-item chứa class .has-dropdown */
+}
+
+
+/* ----- Basic Reset & Body Styling ----- */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif; /* Hoặc font bạn muốn */
+  font-size: 14px;
+}
+
+ul {
+  list-style: none; /* Bỏ dấu chấm đầu dòng của list */
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none; /* Bỏ gạch chân link */
+  color: inherit; /* Link kế thừa màu từ thẻ cha */
+}
+
+/* ----- Navbar Styling ----- */
+.navbar {
+  background-color: #0096D6; /* Màu xanh dương giống ảnh */
+  color: white;
+  display: flex; /* Sử dụng flexbox để căn giữa dễ dàng (tùy chọn) */
+  justify-content: center; /* Căn giữa các mục nav */
+  position: relative; /* Added in case of future absolute positioning needs */
+  z-index: 10; /* Ensure nav is above search bar if overlapping happens */
+}
+
+.nav-list {
+  display: flex; /* Các mục nav nằm ngang */
+}
+
+/* ----- Nav Item Styling ----- */
+.nav-item {
+  position: relative; /* Quan trọng để định vị dropdown menu */
+}
+
+.nav-item > a { /* Chỉ áp dụng cho link cấp 1 */
+  display: block; /* Link chiếm toàn bộ không gian li */
+  padding: 15px 20px; /* Khoảng cách bên trong link */
+  color: white;
+  transition: background-color 0.3s ease; /* Hiệu ứng chuyển màu nền mượt */
+}
+
+.nav-item > a .fa-house { /* Icon nhà */
+  margin-right: 5px;
+}
+
+.nav-item > a .arrow-down { /* Mũi tên xuống */
+  font-size: 0.8em; /* Kích thước nhỏ hơn */
+  margin-left: 5px;
+  display: inline-block; /* Để không bị xuống dòng */
+}
+
+/* ----- Hover Effect for Nav Items ----- */
+.nav-item:hover > a { /* Khi di chuột qua li cấp 1 */
+  background-color: #007AB5; /* Đổi màu nền đậm hơn */
+}
+
+/* ----- Dropdown Menu Styling (Hidden by default) ----- */
+.dropdown-menu {
+  display: none; /* Ẩn menu con ban đầu */
+  position: absolute; /* Định vị tuyệt đối so với .nav-item */
+  top: 100%; /* Nằm ngay dưới mục cha */
+  left: 0; /* Căn lề trái với mục cha */
+  background-color: white; /* Nền trắng */
+  min-width: 200px; /* Độ rộng tối thiểu */
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Đổ bóng */
+  z-index: 100; /* Ensure dropdown is above everything */
+  border-top: 3px solid #007AB5; /* Thêm đường viền xanh phía trên */
+}
+
+/* ----- Dropdown Item Styling ----- */
+.dropdown-item a {
+  display: block;
+  padding: 12px 16px;
+  color: #333; /* Màu chữ đen */
+  white-space: nowrap; /* Ngăn text xuống dòng */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Hiệu ứng chuyển màu nền + text */
+  border-bottom: 1px solid #f0f0f0; /* Đường kẻ ngăn cách */
+}
+
+.dropdown-item:last-child a {
+  border-bottom: none; /* Bỏ đường kẻ ở mục cuối */
+}
+
+/* ----- Hover Effect for Dropdown Items ----- */
+.dropdown-item a:hover {
+  background-color: #f1f1f1; /* Màu nền xám nhạt khi hover */
+  color: #007AB5; /* Đổi màu chữ thành xanh */
+}
+
+/* ----- Show Dropdown on Hover ----- */
+.nav-item.has-dropdown:hover > .dropdown-menu {
+  display: block; /* Hiển thị menu con khi di chuột qua .nav-item chứa class .has-dropdown */
+}
+
+
+/* ======================================= */
+/* ===== SEARCH BAR & TAGS STYLING ===== */
+/* ======================================= */
+
+.search-container {
+  background-color: #f0f0f0; /* Light grey background */
+  padding: 20px 15px; /* Increased vertical padding slightly, added horizontal */
+  display: flex;
+  flex-direction: column; /* Stack wrapper and tags vertically */
+  align-items: center; /* Center items horizontally */
+  width: 100%; /* Ensure container takes full width */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.search-wrapper {
+  display: flex; /* Align input and button horizontally */
+  width: 100%; /* Take full width available within the container's constraints */
+  max-width: 900px; /* Adjusted max-width, change as needed */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15); /* Slightly enhanced shadow */
+  border-radius: 5px; /* Slightly more rounded corners */
+  overflow: hidden; /* Clip contents to rounded corners */
+  margin-bottom: 15px; /* Add space between search bar and tags */
+}
+
+.search-input {
+  flex-grow: 1; /* Take available space */
+  padding: 12px 18px; /* Slightly larger padding */
+  border: 1px solid #ccc;
+  border-right: none; /* Remove border between input and button */
+  font-size: 15px; /* Slightly larger font */
+  outline: none; /* Remove default focus outline */
+  color: #333;
+  /* Removed individual border-radius, handled by .search-wrapper overflow: hidden */
+}
+
+.search-input::placeholder { /* Style placeholder text */
+    color: #888;
+    opacity: 1; /* Ensure placeholder is visible */
+}
+
+.search-input:focus {
+    border-color: #007AB5; /* Highlight border on focus */
+    /* Optional: Add subtle inner shadow or glow on focus */
+    /* box-shadow: inset 0 1px 2px rgba(0, 122, 181, 0.2); */
+}
+
+.search-button {
+  flex-shrink: 0; /* Prevent button from shrinking */
+  padding: 12px 18px; /* Match input padding */
+  background-color: #007AB5; /* Blue background */
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px; /* Icon size */
+  transition: background-color 0.3s ease;
+  border-left: 1px solid #005A8C; /* Separator line */
+  display: flex; /* Helps center icon */
+  align-items: center;
+  justify-content: center;
+  /* Removed individual border-radius, handled by .search-wrapper overflow: hidden */
+}
+
+.search-button:hover {
+  background-color: #005A8C; /* Darker blue on hover */
+}
+
+/* ----- Search Tags Styling ----- */
+.search-button-text {
+  margin-left: 5px; /* Space between icon and text */
+}
+@media (max-width: 450px) {
+  .search-button-text {
+      display: none; /* Hide text on very small screens */
+  }
+   .search-button {
+      padding: 12px 14px; /* Adjust padding when text is hidden */
+  }
+}
+
+
+/* ----- Filter Area Styling ----- */
+.filter-area {
+display: flex; /* Arrange filter groups horizontally */
+flex-wrap: wrap; /* Allow groups to wrap onto the next line */
+justify-content: center; /* Center groups horizontally */
+gap: 15px 20px; /* Vertical and horizontal gap between groups */
+width: 100%;
+max-width: 900px; /* Match search bar width */
+margin-top: 15px; /* Space below the search bar */
+padding: 0 10px; /* Padding on the sides */
+box-sizing: border-box;
+}
+
+.filter-group {
+display: flex;
+flex-direction: column; /* Stack label above select */
+align-items: flex-start; /* Align items to the start (left) */
+/* Or use flex-direction: row; align-items: center; for side-by-side */
+}
+
+.filter-label {
+font-size: 13px;
+font-weight: 600;
+color: #333;
+margin-bottom: 5px; /* Space between label and select */
+display: block; /* Ensure it takes its own line */
+}
+
+.filter-select {
+padding: 8px 25px 8px 10px; /* Top/Bottom, Right (for arrow space), Left */
+font-size: 14px;
+border: 1px solid #ccc;
+border-radius: 4px;
+background-color: white;
+min-width: 180px; /* Minimum width for dropdowns */
+cursor: pointer;
+appearance: none; /* Remove default browser dropdown arrow */
+-webkit-appearance: none;
+-moz-appearance: none;
+background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007AB5%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); /* Custom arrow */
+background-repeat: no-repeat;
+background-position: right 10px center;
+background-size: 10px auto;
+transition: border-color 0.2s ease;
+}
+
+.filter-select:focus {
+outline: none;
+border-color: #007AB5; /* Highlight border on focus */
+box-shadow: 0 0 0 2px rgba(0, 122, 181, 0.2); /* Subtle glow */
+}
+
+.filter-select:hover {
+  border-color: #888;
+}
+
+/* Optional: Style disabled state */
+.filter-select:disabled {
+  background-color: #e9e9e9;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.search-tag:hover {
+  background-color: #007AB5;
+  color: white;
+  border-color: #005A8C;
+  transform: translateY(-2px); /* Slightly more lift */
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+.search-tag:active {
+    transform: translateY(0px); /* Push back down on click */
+    background-color: #005A8C; /* Use darker blue on active */
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}

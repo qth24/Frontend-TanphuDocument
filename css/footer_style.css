@@ -1,0 +1,148 @@
+/* --- Kiểu dáng Footer --- */
+.site-footer {
+    background-color: #2c3e50; /* Màu nền tối cho footer */
+    color: #bdc3c7; /* Màu chữ sáng hơn trên nền tối */
+    padding: 60px 0; /* Khoảng cách trên và dưới */
+    font-size: 0.95em;
+}
+
+.footer-container {
+    max-width: 1170px; /* Chiều rộng tối đa của nội dung footer */
+    margin: 0 auto; /* Căn giữa container */
+    padding: 0 15px; /* Khoảng cách lề trái/phải khi màn hình nhỏ */
+}
+
+.footer-row {
+    display: flex; /* Sử dụng Flexbox để xếp các cột */
+    flex-wrap: wrap; /* Cho phép các cột xuống dòng khi không đủ chỗ */
+    justify-content: space-between; /* Phân bố khoảng cách đều giữa các cột */
+    margin-bottom: 30px; /* Khoảng cách dưới trước đường kẻ */
+}
+
+.footer-col {
+    width: 100%; /* Mặc định chiếm toàn bộ chiều rộng (cho mobile) */
+    margin-bottom: 30px; /* Khoảng cách giữa các cột khi xuống dòng */
+    padding: 0 10px; /* Khoảng cách nhỏ bên trong cột */
+}
+
+/* --- Kiểu dáng cho từng cột --- */
+.footer-col h4 {
+    font-size: 1.2em;
+    color: #ecf0f1; /* Màu tiêu đề sáng hơn */
+    margin-bottom: 25px;
+    font-weight: 600;
+    position: relative; /* Để tạo gạch chân trang trí */
+    padding-bottom: 10px;
+    text-transform: uppercase; /* Viết hoa tiêu đề */
+}
+
+/* Tạo gạch chân trang trí cho tiêu đề */
+.footer-col h4::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: #e74c3c; /* Màu gạch chân nổi bật */
+    height: 2px;
+    width: 50px; /* Độ dài gạch chân */
+}
+
+.footer-col p {
+    color: #bdc3c7; /* Màu chữ cho đoạn văn bản */
+    line-height: 1.8;
+}
+
+.footer-logo {
+    max-width: 150px; /* Giới hạn kích thước logo */
+    margin-bottom: 15px;
+}
+
+/* Kiểu dáng danh sách liên kết */
+.links-col ul li:not(:last-child) {
+    margin-bottom: 12px;
+}
+
+.links-col ul li a {
+    color: #bdc3c7;
+    transition: color 0.3s ease, padding-left 0.3s ease; /* Hiệu ứng chuyển động */
+    display: inline-block; /* Để áp dụng padding */
+}
+
+.links-col ul li a:hover {
+    color: #e74c3c; /* Màu khi hover */
+    padding-left: 5px; /* Hiệu ứng dịch sang phải nhẹ */
+}
+
+/* Kiểu dáng icon mạng xã hội */
+.social-links a {
+    display: inline-block; /* Để các icon nằm trên hàng */
+    height: 40px;
+    width: 40px;
+    background-color: rgba(255, 255, 255, 0.15); /* Nền mờ nhẹ */
+    margin: 0 10px 10px 0; /* Khoảng cách giữa các icon */
+    text-align: center;
+    line-height: 40px; /* Căn giữa icon theo chiều dọc */
+    border-radius: 50%; /* Bo tròn thành hình tròn */
+    color: #ffffff; /* Màu icon */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Hiệu ứng */
+}
+
+.social-links a:hover {
+    color: #ffffff;
+    background-color: #e74c3c; /* Màu nền khi hover */
+}
+
+/* Icon trong cột contact (nếu bạn thêm địa chỉ, email...) */
+.contact-col p i {
+    margin-right: 8px;
+    color: #e74c3c; /* Màu icon */
+}
+
+/* Đường kẻ ngang */
+.footer-divider {
+    border: 0;
+    border-top: 1px solid #4b6078; /* Màu đường kẻ nhạt */
+    margin: 20px 0;
+}
+
+/* Phần Copyright ở dưới cùng */
+.footer-bottom {
+    text-align: center;
+    font-size: 0.9em;
+    color: #95a5a6; /* Màu chữ nhạt hơn */
+}
+
+.footer-bottom p {
+    margin: 5px 0;
+}
+
+.footer-bottom a {
+    color: #bdc3c7;
+    text-decoration: underline;
+}
+
+.footer-bottom a:hover {
+    color: #e74c3c;
+}
+
+/* --- Responsive --- */
+
+/* Cho màn hình Tablet trở lên */
+@media (min-width: 768px) {
+    .footer-col {
+        width: calc(50% - 20px); /* 2 cột trên tablet */
+        margin-bottom: 30px;
+    }
+    /* Cột thứ 3 (contact) có thể cho full width nếu muốn */
+}
+
+/* Cho màn hình Desktop nhỏ trở lên */
+@media (min-width: 992px) {
+    .footer-col {
+        width: calc(33.333% - 20px); /* 3 cột trên desktop */
+         margin-bottom: 0; /* Không cần margin bottom nữa vì nằm trên 1 hàng */
+    }
+     .footer-row {
+         margin-bottom: 40px; /* Tăng khoảng cách trước đường kẻ */
+     }
+}
