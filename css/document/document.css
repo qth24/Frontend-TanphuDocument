@@ -1,0 +1,178 @@
+/* === CSS Styles for Search Results Page (document.html) === */
+
+body {
+    background-color: #f4f7f6; /* Màu nền nhẹ cho trang */
+}
+
+.results-page-container {
+    /* Sử dụng class .container từ main_style.css để căn giữa và giới hạn chiều rộng */
+    padding-top: 30px; /* Khoảng cách trên */
+    padding-bottom: 40px; /* Khoảng cách dưới */
+    min-height: calc(100vh - 200px); /* Đảm bảo nội dung đủ cao, trừ đi chiều cao ước tính của nav/footer */
+}
+
+.results-page-title {
+    font-size: 2em; /* Kích thước lớn hơn */
+    color: #005A8C; /* Màu xanh đậm giống .column-title */
+    margin-bottom: 25px;
+    text-align: center; /* Căn giữa tiêu đề */
+    border-bottom: 2px solid #007AB5; /* Đường kẻ giống .column-title */
+    padding-bottom: 10px;
+}
+
+#results-container {
+    /* Container chính cho các kết quả */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Khoảng cách giữa các item kết quả */
+}
+
+.search-result-item {
+    background-color: #ffffff; /* Nền trắng */
+    border: 1px solid #e0e0e0; /* Viền xám nhạt giống .news-column */
+    border-radius: 6px; /* Bo góc */
+    padding: 20px 25px; /* Padding bên trong */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.07); /* Đổ bóng nhẹ */
+    transition: box-shadow 0.3s ease;
+}
+
+.search-result-item:hover {
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1); /* Đổ bóng rõ hơn khi hover */
+}
+
+.result-item-title {
+    font-size: 1.3em; /* Kích thước tiêu đề item */
+    color: #007AB5; /* Màu xanh dương */
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: 600; /* Đậm vừa */
+}
+
+.result-item-title a { /* Style cho link tiêu đề (nếu có) */
+     color: inherit; /* Kế thừa màu xanh */
+     text-decoration: none;
+}
+.result-item-title a:hover {
+    text-decoration: underline;
+}
+
+
+.result-item-meta p {
+    margin: 5px 0;
+    font-size: 0.9em; /* Kích thước chữ nhỏ hơn cho metadata */
+    color: #555; /* Màu xám đậm */
+    line-height: 1.5;
+}
+
+.result-item-meta strong {
+    color: #333; /* Màu đen cho phần label */
+    min-width: 90px; /* Đảm bảo các label thẳng hàng (tùy chỉnh) */
+    display: inline-block; /* Để áp dụng min-width */
+}
+
+.result-item-tags {
+    margin-top: 12px;
+    margin-bottom: 15px;
+}
+
+.result-tag {
+    display: inline-block;
+    background-color: #e9ecef; /* Màu nền tag xám nhạt */
+    color: #495057; /* Màu chữ tag */
+    padding: 4px 10px;
+    border-radius: 15px; /* Bo tròn nhiều hơn */
+    font-size: 0.85em;
+    margin-right: 8px;
+    margin-bottom: 5px; /* Cho trường hợp xuống dòng */
+    white-space: nowrap;
+}
+ /* Tùy chỉnh màu cho các loại tag khác nhau (ví dụ) */
+.result-tag.subject { background-color: #d1ecf1; color: #0c5460; } /* Xanh nhạt */
+.result-tag.grade { background-color: #d4edda; color: #155724; } /* Xanh lá */
+.result-tag.year { background-color: #f8d7da; color: #721c24; } /* Hồng nhạt */
+.result-tag.semester { background-color: #fff3cd; color: #856404; } /* Vàng nhạt */
+
+
+.result-item-actions {
+    margin-top: 15px;
+    border-top: 1px solid #eee; /* Đường kẻ phân cách nhẹ */
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between; /* Đẩy nút sang phải, stats sang trái */
+    align-items: center;
+    flex-wrap: wrap; /* Cho phép wrap trên màn hình nhỏ */
+    gap: 10px;
+}
+
+.result-item-stats {
+     font-size: 0.9em;
+     color: #6c757d; /* Màu xám */
+}
+.result-item-stats i { /* Icon cho stats */
+     margin-right: 3px;
+     color: #007AB5; /* Màu xanh cho icon */
+ }
+
+.download-link {
+    display: inline-flex; /* Sử dụng flex để căn icon */
+    align-items: center;
+    padding: 8px 18px;
+    background-color: #007AB5; /* Màu giống button tìm kiếm */
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.95em;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    border: none; /* Bỏ viền mặc định của link */
+    cursor: pointer;
+}
+
+.download-link i {
+    margin-right: 6px; /* Khoảng cách giữa icon và text */
+}
+
+.download-link:hover {
+    background-color: #005A8C; /* Màu đậm hơn khi hover */
+    color: white; /* Đảm bảo chữ vẫn trắng */
+}
+
+/* Thông báo khi không có kết quả */
+.no-results-message {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #fff;
+    border: 1px dashed #ccc;
+    border-radius: 5px;
+    color: #555;
+    font-size: 1.1em;
+}
+ .no-results-message i {
+     font-size: 1.5em;
+     margin-bottom: 10px;
+     display: block;
+     color: #007AB5;
+ }
+
+ /* Responsive adjustments if needed */
+ @media (max-width: 768px) {
+     .results-page-title {
+         font-size: 1.6em;
+     }
+     .search-result-item {
+         padding: 15px 20px;
+     }
+      .result-item-title {
+         font-size: 1.15em;
+     }
+ }
+
+ /* File: ../css/main_style.css */
+.container {
+    max-width: 1200px;  /* <-- Giới hạn chiều rộng tối đa */
+    margin-left: auto; /* <-- Tự động căn lề trái */
+    margin-right: auto;/* <-- Tự động căn lề phải => Căn giữa */
+    padding-left: 15px;
+    padding-right: 15px;
+    /* Các thuộc tính khác có thể có */
+}

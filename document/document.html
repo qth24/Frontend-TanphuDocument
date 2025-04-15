@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TanphuDocument</title>
+    <link rel="stylesheet" href="../css/head_nav_style.css">
+    <link rel="stylesheet" href="../css/main_style.css">
+    <link rel="stylesheet" href="../css/footer_style.css">
+    <link rel="stylesheet" href="../css/document/document.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+    
+
+<!-- Nav bar -->
+<nav class="navbar">
+    <ul class="nav-list">
+        <li class="nav-item">
+            <a href="../index.html"><i class="fa-solid fa-house"></i> Trang chủ</a>
+        </li>
+        <li class="nav-item has-dropdown">
+            <a href="#">Tin tức <span class="arrow-down">▾</span></a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-item"><a href="#">Tin nổi bật</a></li>
+                <li class="dropdown-item"><a href="#">Thông báo</a></li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a href="upload/upload.html">Đóng góp tài liệu </a>
+        </li>
+        <li class="nav-item has-dropdown">
+            <a href="#">Khoa học tự nhiên <span class="arrow-down">▾</span></a>
+             <ul class="dropdown-menu">
+                <li class="dropdown-item"><a href="#">Toán học</a></li>
+                <li class="dropdown-item"><a href="#">Vật lý</a></li>
+                <li class="dropdown-item"><a href="#">Hoá học</a></li>
+                 <li class="dropdown-item"><a href="#">Sinh học</a></li>
+            </ul>
+        </li>
+        <li class="nav-item has-dropdown">
+            <a href="#">Khoa học xã hội <span class="arrow-down">▾</span></a>
+             <ul class="dropdown-menu">
+                <li class="dropdown-item"><a href="#">Ngữ văn</a></li>
+                <li class="dropdown-item"><a href="#">Lịch sử</a></li>
+                <li class="dropdown-item"><a href="#">Địa lý</a></li>
+                <li class="dropdown-item"><a href="#">Giáo dục kinh tế và pháp luật</a></li>
+            </ul>
+        </li>
+        <li class="nav-item has-dropdown">
+            <a href="#">Các môn khác <span class="arrow-down">▾</span></a>
+             <ul class="dropdown-menu">
+                <li class="dropdown-item"><a href="#">Công nghệ</a></li>
+                <li class="dropdown-item"><a href="#">Tin học</a></li>
+                <li class="dropdown-item"><a href="#">Giáo dục quốc phòng và an ninh</a></li>
+            </ul>
+        </li>
+        <li class="nav-item has-dropdown">
+            <a href="#">Ngoại ngữ <span class="arrow-down">▾</span></a>
+             <ul class="dropdown-menu">
+                <li class="dropdown-item"><a href="#">Anh Văn</a></li>
+                <li class="dropdown-item"><a href="#">Tiếng Trung</a></li>
+            </ul>
+        </li>
+        <li class="nav-item has-dropdown">
+            <a href="#">Kỳ thi đặc biệt <span class="arrow-down">▾</span></a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-item"><a href="#">THPTQG</a></li>
+                <li class="dropdown-item"><a href="#">ĐGNL</a></li>
+                <li class="dropdown-item"><a href="#">HSG cấp tỉnh</a></li>
+            </ul>
+        </li>
+        <li class="nav-item has-dropdown">
+            <a href="#">Câu lạc bộ <span class="arrow-down">▾</span></a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-item"><a href="#">Truyền thông</a></li>
+                <li class="dropdown-item"><a href="#">Văn học - Nghệ thuật</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+<body>
+
+<div class="container results-page-container">
+    <h1>Kết quả tìm kiếm tài liệu</h1>
+
+    <div id="results-container">
+        <!-- Kết quả sẽ được chèn vào đây bằng JavaScript -->
+        <p>Đang tải kết quả...</p>
+    </div>
+
+    <!-- Nhúng script xử lý hiển thị kết quả -->
+    <script src="../js/document/document.js"></script>
+    <!-- Hoặc nhúng trực tiếp code JS vào đây -->
+    <!-- <script> ... code bên dưới ... </script> -->
+</div>
+
+    <!-- Footer -->
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-row">
+            <!-- About us -->
+            <div class="footer-col about-col">
+                <h4>Về Chúng Tôi</h4>
+                <!-- <img src="logo.png" alt="Logo Công Ty" class="footer-logo"> -->
+                <p>Chúng tôi là nhóm cựu sinh viên trường THPT Tân Phú 2021-2024, chúng tôi tạo ra website này giúp các bạn học sinh THPT Tân Phú (và có thể là các trường khác) tìm kiếm tài liệu nhanh chóng và thông minh.</p>
+            </div>
+
+            <!-- Members -->
+            <div class="footer-col links-col">
+                <h4>Các thành viên</h4>
+                <ul>
+                    <li><a href="https://www.facebook.com/dqthinhh">Đinh Quốc Thịnh - 12A2 - (2021-2024)</a></li>
+                    <li><a href="https://www.facebook.com/profile.php?id=100035027226365">Cao Hoàng Phúc - 12A2 - (2021-2024)</a></li>
+                </ul>
+            </div>
+
+            <!-- Social Media -->
+            <div class="footer-col contact-col">
+                <h4>Kết Nối Với Chúng Tôi</h4>
+                <!-- Có thể thêm địa chỉ, email, sđt ở đây nếu muốn -->
+                <!-- <p><i class="fas fa-map-marker-alt"></i> Địa chỉ công ty</p>
+                <p><i class="fas fa-envelope"></i> email@example.com</p>
+                <p><i class="fas fa-phone"></i> +84 123 456 789</p> -->
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Youtube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <hr class="footer-divider">
+
+        <div class="footer-bottom">
+            <p>© 2025 Tân Phú Document - Tìm kiếm tài liệu thông minh.</p>
+            <!-- <p>Thiết kế bởi <a href="#">Tên Bạn</a></p> -->
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

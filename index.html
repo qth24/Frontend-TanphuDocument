@@ -7,9 +7,7 @@
     <link rel="stylesheet" href="css/head_nav_style.css">
     <link rel="stylesheet" href="css/main_style.css">
     <link rel="stylesheet" href="css/footer_style.css">
-    <link rel="stylesheet" href="css/transition.css">
 
-    <!-- Optional: Add Font Awesome for icons like the home icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
@@ -17,7 +15,7 @@
 </header>   
 
 <body>
-
+<!-- Nav bar -->
 <nav class="navbar">
     <ul class="nav-list">
         <li class="nav-item">
@@ -84,9 +82,7 @@
     </ul>
 </nav>
 
-<!-- Phần còn lại của trang web của bạn -->
-
-<!-- Dòng chữ chạy thông báo -->
+<!-- Notice bar -->
 <div class="marquee-container">
     <marquee behavior="scroll" direction="left" scrollamount="5">
         <span>Tân Phú Document là trang Web chứa tài liệu các môn học cho các bạn học sinh trường THPT Tân Phú</span>
@@ -94,9 +90,9 @@
     </marquee>
 </div>
 
-<!-- Thanh tìm kiếm và Bộ lọc -->
+<!-- Search bar and filter -->
 <div class="search-container">
-    <!-- Thanh tìm kiếm bằng text -->
+    <!-- Find by text -->
     <div class="search-wrapper">
         <input type="text" id="search-input-keyword" class="search-input" placeholder="Nhập từ khóa tìm kiếm (tùy chọn)...">
         <button type="button" id="main-search-button" class="search-button">
@@ -104,7 +100,7 @@
         </button>
     </div>
 
-    <!-- Khu vực chọn bộ lọc -->
+    <!-- Filter -->
     <div class="filter-area">
         <div class="filter-group">
             <label for="filter-teacher" class="filter-label">Giáo viên:</label>
@@ -118,7 +114,12 @@
             <label for="filter-year" class="filter-label">Năm học:</label>
             <select id="filter-year" name="year" class="filter-select">
                 <option value="">-- Tất cả năm học --</option>
-                <!-- Options will be added by JavaScript -->
+                <option value="2025">2024-2025</option>
+                <option value="2024">2023-2024</option>
+                <option value="2023">2022-2023</option>
+                <option value="2022">2021-2022</option>
+                <option value="2021">2020-2021</option>
+                <option value="2020">2019-2020</option>
             </select>
         </div>
 
@@ -126,7 +127,17 @@
             <label for="filter-subject" class="filter-label">Môn học:</label>
             <select id="filter-subject" name="subject" class="filter-select">
                 <option value="">-- Tất cả môn học --</option>
-                <!-- Options will be added by JavaScript -->
+                <option value="Math">Toán học</option>
+                <option value="Physics">Vật lý</option>
+                <option value="Chemistry">Hóa học</option>
+                <option value="Biology">Sinh học</option>
+                <option value="Literature">Ngữ văn</option>
+                <option value="English">Tiếng Anh</option>
+                <option value="History">Lịch sử</option>
+                <option value="Geography">Địa lý</option>
+                <option value="It">Tin học</option>
+                <option value="Civic_education">Giáo dục kinh tế và pháp luật</option>
+                <option value="Tech">Công nghệ</option>
             </select>
         </div>
         <div class="filter-group">
@@ -140,41 +151,45 @@
         </div>
         <div class="filter-group">
             <label for="filter-grade" class="filter-label">Kỳ thi:</label>
-            <select id="filter-grade" name="grade" class="filter-select">
+            <select id="filter-grade" name="semester" class="filter-select">
                 <option value="">-- Kỳ học --</option>
-                <option value="GK">Giữa kỳ</option>
-                <option value="CK">Cuối kỳ</option>
+                <option value="1">Giữa kỳ 1</option>
+                <option value="2">Cuối kỳ 1</option>
+                <option value="3">Giữa kỳ 2</option>
+                <option value="4">Cuối kỳ 2</option>
             </select>
         </div>
         <div class="filter-group">
             <label for="filter-grade" class="filter-label">Kỳ thi khác:</label>
-            <select id="filter-grade" name="grade" class="filter-select">
+            <select id="filter-grade" name="competition" class="filter-select">
                 <option value="">-- Các cuộc thi --</option>
-                <option value="GK">THPTQG</option>
-                <option value="CK">ĐGNL</option>
-                <option value="CK">HSG cấp tỉnh</option>
+                <option value="1">Trung học phổ thông quốc gia</option>
+                <option value="2">Đánh giá năng lực</option>
+                <option value="3">Học sinh giỏi cấp tỉnh</option>
             </select>
         </div>
-    </div> <!-- End .filter-area -->
+    </div> 
+    <!-- End .filter-area -->
 
-</div> <!-- End .search-container -->
+</div> 
+<!-- End .search-container -->
 
-<!-- Container cho Banner Image -->
+<!-- Container for Banner Image -->
 <div class="container">
     <div class="banner-container">
         <img src="img/banner.png" alt="Banner" class="banner-image">
     </div>
 </div>
 
-<!-- Phần nội dung chính -->
+<!-- Main -->
 <main class="main-content container">
     <div class="content-grid">
-        <!-- Cột 1: Tin nổi bật -->
+        <!-- Column 1 -->
         <section class="news-column">
             <h2 class="column-title">TIN NỔI BẬT</h2>
             <div class="thumbnail-container">
                 <img src="img/tinnoibat.png" alt="Tin nổi bật">
-                <!-- Có thể thêm overlay hoặc icon play nếu muốn -->
+
             </div>
             <ul class="news-list">
                 <li>
@@ -210,7 +225,7 @@
             </ul>
         </section>
 
-        <!-- Cột 2: Tin UIT -->
+        <!-- Column 2 -->
         <section class="news-column">
             <h2 class="column-title">TIN UIT</h2>
             <div class="thumbnail-container date-overlay-container">
@@ -246,7 +261,7 @@
             </ul>
         </section>
 
-        <!-- Cột 3: Tuyển sinh -->
+        <!-- Column 3 -->
         <section class="news-column">
             <h2 class="column-title">TUYỂN SINH (ĐH VÀ SĐH)</h2>
             <div class="thumbnail-container date-overlay-container">
@@ -290,14 +305,14 @@
 <footer class="site-footer">
     <div class="footer-container">
         <div class="footer-row">
-            <!-- Cột 1: Giới thiệu / Logo -->
+            <!-- About us -->
             <div class="footer-col about-col">
                 <h4>Về Chúng Tôi</h4>
                 <!-- <img src="logo.png" alt="Logo Công Ty" class="footer-logo"> -->
                 <p>Chúng tôi là nhóm cựu sinh viên trường THPT Tân Phú 2021-2024, chúng tôi tạo ra website này giúp các bạn học sinh THPT Tân Phú (và có thể là các trường khác) tìm kiếm tài liệu nhanh chóng và thông minh.</p>
             </div>
 
-            <!-- Cột 2: Liên kết nhanh -->
+            <!-- Members -->
             <div class="footer-col links-col">
                 <h4>Các thành viên</h4>
                 <ul>
@@ -306,7 +321,7 @@
                 </ul>
             </div>
 
-            <!-- Cột 3: Liên hệ / Mạng xã hội -->
+            <!-- Social Media -->
             <div class="footer-col contact-col">
                 <h4>Kết Nối Với Chúng Tôi</h4>
                 <!-- Có thể thêm địa chỉ, email, sđt ở đây nếu muốn -->
@@ -334,8 +349,8 @@
 
 </div>
 
-<script src="js/search_bar.js"></script>
-<script src="js/transition.js"></script>
+<script src="js/search.js"></script>
+
 
 </body>
 </html>
