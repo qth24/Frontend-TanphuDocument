@@ -2,9 +2,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const uploadForm = document.getElementById('uploadForm');
     const submitBtn = document.getElementById('submitBtn');
     const formMessage = document.getElementById('form-message');
-    const fileInput = document.getElementById('file'); // File input
+    const fileInput = document.getElementById('file');
 
-    // CHECK XEM UP FILE ĐƯỢC CHƯA
+    // --- URL API CỦA BẠN ---
+    const apiUrl = 'https://tanphudocument.caohoangphuc.id.vn/file/upload';
+
+    // ----- Code preview file không đổi -----
     fileInput.addEventListener('change', function () {
         const file = fileInput.files[0];
         const previewPlaceholder = document.getElementById('file-preview-placeholder');
@@ -13,15 +16,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const fileSizeSpan = document.getElementById('file-size');
         const fileTypeSpan = document.getElementById('file-type');
         const fileUploadLabel = document.querySelector('label.file-upload-label[for="file"]');
-    
+
         if (file) {
             if (previewPlaceholder) previewPlaceholder.style.display = 'none';
             if (previewDetails) previewDetails.style.display = 'block';
-    
             fileNameSpan.textContent = file.name;
             fileSizeSpan.textContent = (file.size / 1024).toFixed(2) + ' KB';
             fileTypeSpan.textContent = file.type || 'Không xác định';
-    
             if (fileUploadLabel) {
                 const icon = fileUploadLabel.querySelector('i');
                 fileUploadLabel.innerHTML = (icon ? icon.outerHTML : '') + ` ${file.name}`;
@@ -30,189 +31,151 @@ document.addEventListener('DOMContentLoaded', () => {
             resetPreview();
         }
     });
-    
+    // ----- Hết code preview file -----
 
-    // --- URL API CỦA BẠN ---
-    // !!! THAY THẾ BẰNG ĐỊA CHỈ API THỰC TẾ !!!
-    const apiUrl = 'https://tanphudocument.caohoangphuc.id.vn/file/upload'; // Ví dụ: endpoint API của bạn
 
-    // Kiểm tra các phần tử cơ bản
     if (!uploadForm || !submitBtn || !formMessage || !fileInput) {
         console.error("Lỗi: Thiếu form, nút submit, vùng thông báo hoặc input file.");
         return;
     }
 
-    // Xử lý sự kiện submit form
     uploadForm.addEventListener('submit', async (event) => {
-        event.preventDefault(); // Ngăn chặn hành vi submit mặc định
+        event.preventDefault();
 
-        // 1. Chuẩn bị UI: Xóa thông báo cũ, vô hiệu hóa nút
         formMessage.textContent = '';
-        formMessage.className = ''; // Xóa class CSS cũ
+        formMessage.className = '';
         submitBtn.disabled = true;
         submitBtn.textContent = 'Đang xử lý...';
 
-        // 2. Kiểm tra các trường bắt buộc (có dấu * đỏ trong label)
+        // ----- Code validation không đổi -----
         let isValid = true;
         const errorMessages = [];
-        // Tìm tất cả label trong form
         const labels = uploadForm.querySelectorAll('label');
-
         labels.forEach(label => {
-            // Kiểm tra xem label có chứa span đánh dấu bắt buộc không
             const requiredMark = label.querySelector('span[style*="color: red"]');
             let associatedInput = null;
-
             if (requiredMark) {
                 const inputId = label.getAttribute('for');
                 if (inputId) {
-                    // Tìm input/select tương ứng qua id
                     associatedInput = document.getElementById(inputId);
-                } else {
-                    // Trường hợp đặc biệt cho file input (label không có 'for')
-                    // Tìm input type=file gần nhất sau label này (hoặc cách khác tùy cấu trúc)
-                    // Cách đơn giản nhất là kiểm tra trực tiếp file input nếu biết id
-                    if (label.textContent.includes('Chọn tệp tài liệu')) {
-                         associatedInput = fileInput;
-                    }
+                } else if (label.textContent.includes('Chọn tệp tài liệu')) {
+                     associatedInput = fileInput;
                 }
-
                 if (associatedInput) {
                     let isEmpty = false;
-                    // Kiểm tra giá trị dựa trên loại phần tử
-                    if (associatedInput.type === 'file') {
-                        isEmpty = associatedInput.files.length === 0;
-                    } else if (associatedInput.tagName === 'SELECT') {
-                        isEmpty = !associatedInput.value; // value rỗng "" là không hợp lệ
-                    } else { // Input text, etc.
-                        isEmpty = associatedInput.value.trim() === '';
-                    }
-
-                    // Nếu trường bắt buộc bị bỏ trống
+                    if (associatedInput.type === 'file') isEmpty = associatedInput.files.length === 0;
+                    else if (associatedInput.tagName === 'SELECT') isEmpty = !associatedInput.value;
+                    else isEmpty = associatedInput.value.trim() === '';
                     if (isEmpty) {
                         isValid = false;
-                        // Lấy nội dung text của label (bỏ dấu *) để làm thông báo lỗi
                         const labelText = label.textContent.replace('*', '').replace(':', '').trim();
                         errorMessages.push(`Vui lòng nhập/chọn "${labelText}".`);
-                        // Thêm class lỗi để thay đổi giao diện (optional)
                         associatedInput.classList.add('is-invalid');
-                         // Xử lý thêm class cho label của file input nếu cần
                         if (associatedInput.type === 'file') {
-                            const fileLabel = uploadForm.querySelector(`label[for="${associatedInput.id}"]`);
-                            if(fileLabel) fileLabel.classList.add('is-invalid-label'); // Ví dụ
+                            const fileLabel = uploadForm.querySelector(`label[for="${associatedInput.id}"], label.file-upload-label`);
+                            if(fileLabel) fileLabel.classList.add('is-invalid-label');
                         }
                     } else {
-                        // Xóa class lỗi nếu trường đã hợp lệ
                         associatedInput.classList.remove('is-invalid');
                          if (associatedInput.type === 'file') {
-                            const fileLabel = uploadForm.querySelector(`label[for="${associatedInput.id}"]`);
-                             if(fileLabel) fileLabel.classList.remove('is-invalid-label'); // Ví dụ
+                            const fileLabel = uploadForm.querySelector(`label[for="${associatedInput.id}"], label.file-upload-label`);
+                             if(fileLabel) fileLabel.classList.remove('is-invalid-label');
                         }
                     }
                 }
             }
         });
-
-        // 3. Xử lý nếu có lỗi validation
         if (!isValid) {
-            formMessage.textContent = errorMessages.join('\n'); // Hiển thị các lỗi, mỗi lỗi một dòng
-            formMessage.className = 'form-error-message'; // Thêm class để CSS (vd: màu đỏ)
-            submitBtn.disabled = false; // Kích hoạt lại nút
+            formMessage.textContent = errorMessages.join('\n');
+            formMessage.className = 'form-error-message'; // Class CSS lỗi (đỏ)
+            submitBtn.disabled = false;
             submitBtn.textContent = 'Gửi tài liệu';
-            return; // Dừng thực thi
+            return;
         }
+        // ----- Hết code validation -----
 
-        // 4. Tạo FormData nếu không có lỗi
         const formData = new FormData(uploadForm);
-        // FormData sẽ tự động lấy tất cả các trường có 'name' và file
 
-        // 5. Gửi dữ liệu bằng Fetch API
         try {
             const response = await fetch(apiUrl, {
                 method: 'POST',
                 body: formData,
-                // KHÔNG cần đặt 'Content-Type': 'multipart/form-data'
-                // Trình duyệt sẽ tự động làm điều đó với boundary chính xác
             });
 
-            // 6. Xử lý phản hồi từ server
-            const responseData = await response.json().catch(() => ({})); // Cố gắng parse JSON, lỗi thì trả về {}
+            const responseText = await response.text(); // Lấy text thô từ server
 
-            if (response.ok) { // Status 200-299
-                formMessage.textContent = responseData.message || 'Đóng góp tài liệu thành công!';
-                formMessage.className = 'form-success-message'; // Thêm class CSS (vd: màu xanh)
-                uploadForm.reset(); // Xóa nội dung các trường trong form
-                // Gọi hàm reset giao diện xem trước file (nếu có)
-                if (typeof resetPreview === 'function') {
-                    resetPreview();
+            // *** THAY ĐỔI LOGIC HIỂN THỊ VÀ MÀU SẮC ***
+
+            // 1. Hiển thị trực tiếp nội dung server trả về
+            formMessage.textContent = responseText; // Chỉ hiển thị text, không thêm tiền tố
+
+            // 2. Xác định màu sắc (class CSS) và hành động (reset form)
+            if (response.ok) { // Status 200-299 - Về mặt kỹ thuật là thành công
+                // Kiểm tra heuristic: xem nội dung có giống thông báo lỗi không
+                // *** Tùy chỉnh các từ khóa này cho phù hợp với các thông báo lỗi thực tế của bạn ***
+                const errorKeywords = ['không chứa', 'lỗi', 'thất bại', 'error', 'fail', 'invalid', 'không hợp lệ', 'không thành công', 'đã có người đăng'];
+                const isLogicalError = errorKeywords.some(keyword =>
+                    responseText.toLowerCase().includes(keyword)
+                );
+
+                if (isLogicalError) {
+                     // Mặc dù status 200, nhưng nội dung giống lỗi -> màu đỏ
+                     formMessage.className = 'form-error-message';
+                     // Không reset form để người dùng sửa
                 } else {
-                     // Hoặc reset thủ công nếu hàm không tồn tại
-                     const previewPlaceholder = document.getElementById('file-preview-placeholder');
-                     const previewDetails = document.getElementById('file-preview-details');
-                     if (previewPlaceholder) previewPlaceholder.style.display = 'block';
-                     if (previewDetails) previewDetails.style.display = 'none';
-                     // ... reset các span khác ...
+                     // Status 200 và nội dung không giống lỗi -> màu xanh, thành công thực sự
+                     formMessage.className = 'form-success-message';
+                     uploadForm.reset(); // Reset form
+                     resetPreview();     // Reset preview file
                 }
-
-            } else { // Lỗi từ server (status 4xx, 5xx)
-                throw new Error(responseData.message || `Lỗi ${response.status}: ${response.statusText}`);
+            } else { // Status 4xx, 5xx - Lỗi HTTP -> màu đỏ
+                formMessage.className = 'form-error-message';
+                // Không reset form
             }
+            // *** HẾT PHẦN THAY ĐỔI ***
+
         } catch (error) {
-            console.error('Lỗi khi gửi form:', error);
-            formMessage.textContent = `Đã xảy ra lỗi: ${error.message}`;
-            formMessage.className = 'form-error-message'; // Class CSS lỗi
+            console.error('Lỗi mạng hoặc xử lý response:', error);
+            formMessage.textContent = `Đã xảy ra lỗi kết nối hoặc xử lý phản hồi:\n${error.message}`;
+            formMessage.className = 'form-error-message'; // Lỗi kết nối -> màu đỏ
         } finally {
-            // 7. Luôn kích hoạt lại nút submit sau khi hoàn tất (dù thành công hay lỗi)
             submitBtn.disabled = false;
             submitBtn.textContent = 'Gửi tài liệu';
         }
     });
 
-    // Optional: Xóa viền đỏ/thông báo lỗi khi người dùng sửa đổi input
-    uploadForm.querySelectorAll('.form-control, .form-control-file').forEach(input => {
+    // ----- Code xóa lỗi validation khi người dùng sửa input không đổi -----
+    uploadForm.querySelectorAll('input, select').forEach(input => {
         const eventType = (input.tagName === 'SELECT' || input.type === 'file') ? 'change' : 'input';
         input.addEventListener(eventType, () => {
             input.classList.remove('is-invalid');
-            // Xóa class lỗi khỏi label của file input (nếu có)
              if (input.type === 'file') {
-                const fileLabel = uploadForm.querySelector(`label[for="${input.id}"]`);
+                const fileLabel = uploadForm.querySelector(`label[for="${input.id}"], label.file-upload-label`);
                  if(fileLabel) fileLabel.classList.remove('is-invalid-label');
-            }
-            // Xóa thông báo lỗi chung khi người dùng bắt đầu sửa
-            if (isValid === false && formMessage.classList.contains('form-error-message')) {
-                // Chỉ xóa nếu trước đó có lỗi validation hiển thị
-                 // formMessage.textContent = '';
-                 // formMessage.className = '';
-                 // Cân nhắc có nên xóa ngay hay đợi submit lại
             }
         });
     });
-
 }); // Kết thúc DOMContentLoaded
 
-// --- Hàm reset giao diện xem trước file (đặt ở đây hoặc import nếu cần) ---
+// --- Hàm resetPreview không đổi ---
 function resetPreview() {
-    const previewContainer = document.getElementById('file-preview-container');
     const previewPlaceholder = document.getElementById('file-preview-placeholder');
     const previewDetails = document.getElementById('file-preview-details');
     const fileNameSpan = document.getElementById('file-name');
     const fileSizeSpan = document.getElementById('file-size');
     const fileTypeSpan = document.getElementById('file-type');
-    const fileUploadLabel = document.querySelector('label.file-upload-label[for="file"]'); // Chính xác hơn
+    const fileUploadLabel = document.querySelector('label.file-upload-label[for="file"]');
 
     if (fileNameSpan) fileNameSpan.textContent = '';
     if (fileSizeSpan) fileSizeSpan.textContent = '';
     if (fileTypeSpan) fileTypeSpan.textContent = '';
     if (previewPlaceholder) previewPlaceholder.style.display = 'block';
     if (previewDetails) previewDetails.style.display = 'none';
-    if (previewContainer) previewContainer.classList.remove('has-file'); // Xóa class khi có file
-    // Reset text của nút chọn file tùy chỉnh
     if (fileUploadLabel) {
-        const icon = fileUploadLabel.querySelector('i'); // Giữ lại icon nếu có
+        const icon = fileUploadLabel.querySelector('i');
         fileUploadLabel.innerHTML = (icon ? icon.outerHTML : '') + ' Chọn tệp...';
+        fileUploadLabel.classList.remove('is-invalid-label');
     }
-    // Quan trọng: form.reset() thường sẽ xóa giá trị của input file
-    // Nếu không, bạn có thể thử:
-    // const fileInput = document.getElementById('file');
-    // if(fileInput) fileInput.value = null;
+    const fileInput = document.getElementById('file');
+    if (fileInput) fileInput.classList.remove('is-invalid');
 }
